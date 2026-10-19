@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jobin John — CSE Student, Developer, Video Editor and Visual Creator.">
+  <title>Jobin John — Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root{
+      --cream:#f5f4ec;
+      --cream-2:#efeee4;
+      --white:#fbfaf5;
+      --olive:#56613a;
+      --olive-dark:#354025;
+      --olive-light:#858d68;
+      --text:#39412b;
+      --muted:#777c67;
+      --line:#d9dacd;
+      --shadow:0 18px 50px rgba(54,64,37,.10);
+      --max:1320px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--cream);
+      color:var(--text);
+      font-family:"DM Sans",sans-serif;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    img{display:block;max-width:100%}
+    ::selection{background:var(--olive);color:#fff}
+
+    .container{
+      width:min(var(--max),calc(100% - 80px));
+      margin:auto;
+    }
+
+    /* decorative organic shapes */
+    .blob{
+      position:absolute;
+      pointer-events:none;
+      z-index:0;
+      background:var(--olive);
+    }
+    .blob.tl{
+      width:150px;height:150px;left:-42px;top:-48px;
+      border-radius:0 0 80px 0;
+      transform:rotate(-12deg);
+    }
+    .blob.br{
+      width:180px;height:120px;right:-55px;bottom:-55px;
+      border-radius:100px 0 0 0;
+      opacity:.45;
+    }
+
+    /* NAV */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      height:84px;
+      background:rgba(245,244,236,.94);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:28px;
+    }
+    .logo{
+      font-size:25px;
+      font-weight:700;
+      letter-spacing:-1.1px;
+      color:var(--olive-dark);
+      white-space:nowrap;
+    }
+    .logo span{font-weight:400}
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:34px;
+      list-style:none;
+    }
+    .nav-links a{
+      position:relative;
+      font-size:13px;
+      color:#46503a;
+      transition:.25s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active{color:var(--olive-dark)}
+    .nav-links a.active:after{
+      content:"";
+      position:absolute;
+      height:2px;
+      left:0;right:0;bottom:-11px;
+      background:var(--olive);
+    }
+    .nav-actions{display:flex;align-items:center;gap:15px}
+    .icon-btn,.menu-btn{
+      width:38px;height:38px;
+      border:0;background:transparent;
+      color:var(--olive-dark);
+      cursor:pointer;
+      display:grid;place-items:center;
+      border-radius:50%;
+    }
+    .icon-btn:hover,.menu-btn:hover{background:var(--cream-2)}
+    .menu-btn{display:none}
+
+    /* BUTTONS */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      min-height:44px;
+      padding:10px 22px;
+      border-radius:24px;
+      border:1px solid var(--olive);
+      background:var(--olive);
+      color:#fff;
+      font-size:13px;
+      font-weight:600;
+      transition:.25s;
+    }
+    .btn:hover{
+      transform:translateY(-2px);
+      background:var(--olive-dark);
+      border-color:var(--olive-dark);
+      box-shadow:0 10px 25px rgba(53,64,37,.16);
+    }
+    .btn.outline{
+      background:transparent;
+      color:var(--olive-dark);
+    }
+    .btn.outline:hover{
+      background:var(--olive);
+      color:#fff;
+    }
+    .btn svg{width:16px;height:16px}
+
+    /* HERO */
+    .hero{
+      min-height:598px;
+      position:relative;
+      overflow:hidden;
+      border-bottom:1px solid var(--line);
+      background:var(--cream);
+    }
+    .hero-inner{
+      min-height:598px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      align-items:center;
+      gap:50px;
+      position:relative;
+      z-index:2;
+    }
+    .hero-copy{padding:65px 0 72px}
+    .eyebrow{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:var(--olive);
+      font-size:12px;
+      font-weight:600;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      margin-bottom:15px;
+    }
+    .eyebrow:after{
+      content:"";
+      width:54px;height:1px;
+      background:var(--olive-light);
+    }
+    h1{
+      font-family:"Playfair Display",serif;
+      color:var(--olive-dark);
+      font-size:clamp(70px,7vw,118px);
+      line-height:.82;
+      letter-spacing:-5px;
+      font-weight:600;
+      margin-bottom:25px;
+    }
+    h1 span{display:block}
+    .hero-role{
+      color:var(--olive);
+      font-size:12px;
+      font-weight:600;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      margin-bottom:20px;
+    }
+    .hero-role i{font-style:normal;padding:0 9px;color:#8a9076}
+    .hero-description{
+      max-width:510px;
+      color:#69705c;
+      font-size:14px;
+      line-height:1.85;
+      margin-bottom:26px;
+    }
+    .hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+    .socials{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      margin-top:27px;
+    }
+    .socials a{color:var(--olive-dark);transition:.2s}
+    .socials a:hover{transform:translateY(-3px);color:var(--olive)}
+    .socials svg{width:18px;height:18px}
+
+    .hero-visual{
+      min-height:598px;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+   .photo-frame{
+  width:min(380px,75%);
+  height:420px;
+  position:relative;
+  z-index:3;
+  transform:translateX(15px);
+}
+    .photo-frame:before{
+      content:"";
+      position:absolute;
+      inset:20px -10px -15px 18px;
+      border:1px solid rgba(86,97,58,.22);
+      border-radius:0 35px 35px 35px;
+      z-index:-1;
+    }
+    .photo-frame img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:14px 14px 8px 8px;
+      background:#dfe0d4;
+    }
+
+    .handwrite{
+      position:absolute;
+      right:2%;
+      top:18%;
+      z-index:5;
+      font-family:"Caveat",cursive;
+      font-size:27px;
+      line-height:1.05;
+      color:var(--olive-dark);
+      transform:rotate(-7deg);
+    }
+    .handwrite:after{
+      content:"";
+      display:block;
+      width:78px;
+      height:1px;
+      background:var(--olive-dark);
+      margin:9px 0 0 5px;
+      transform:rotate(-5deg);
+    }
+    .scroll{
+      position:absolute;
+      right:25px;
+      bottom:65px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      color:var(--olive-dark);
+      font-size:8px;
+      letter-spacing:4px;
+      z-index:5;
+    }
+    .scroll span{writing-mode:vertical-rl}
+    .scroll:after{content:"↓";font-size:21px;letter-spacing:0}
+
+    /* GENERAL */
+    section{border-bottom:1px solid var(--line)}
+    .section{padding:78px 0}
+    .section-label{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#7c826d;
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:3px;
+      margin-bottom:20px;
+    }
+    .section-label:after{
+      content:"";
+      width:52px;height:1px;background:#aeb39e;
+    }
+    .section-title{
+      font-family:"Playfair Display",serif;
+      color:var(--olive-dark);
+      font-size:39px;
+      line-height:1.05;
+      font-weight:500;
+    }
+    .section-title span{display:block}
+    .muted{color:var(--muted)}
+
+    /* ABOUT */
+    .about-layout{
+      display:grid;
+      grid-template-columns:280px 1fr;
+      gap:62px;
+      align-items:start;
+    }
+    .about-intro{
+      padding-top:3px;
+    }
+    .about-intro p{
+      color:#777d68;
+      font-size:13px;
+      line-height:1.8;
+      margin:18px 0 25px;
+    }
+    .learn-link{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--olive-dark);
+      font-size:12px;
+      font-weight:600;
+      border-bottom:1px solid #a9ae98;
+      padding-bottom:4px;
+    }
+    .about-cards{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:27px;
+    }
+    .feature-card{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:7px;
+      overflow:hidden;
+      transition:.3s;
+      min-width:0;
+    }
+    .feature-card:hover{
+      transform:translateY(-6px);
+      box-shadow:var(--shadow);
+    }
+    .feature-image{
+      height:160px;
+      overflow:hidden;
+      background:#dfe1d2;
+    }
+    .feature-image img{
+      width:100%;height:100%;object-fit:cover;
+      transition:.45s;
+    }
+    .feature-card:hover .feature-image img{transform:scale(1.05)}
+    .feature-body{padding:14px 20px 20px}
+    .feature-number{
+      color:var(--olive);
+      font-size:9px;
+      font-weight:600;
+      letter-spacing:2px;
+      margin-bottom:7px;
+    }
+    .feature-body h3{
+      font-family:"Playfair Display",serif;
+      color:var(--olive-dark);
+      font-size:20px;
+      line-height:1.05;
+      font-weight:500;
+      min-height:43px;
+    }
+    .feature-arrow{
+      display:flex;
+      justify-content:flex-end;
+      margin-top:12px;
+      color:var(--olive-dark);
+    }
+    .feature-arrow svg{width:16px}
+
+    /* SKILLS */
+    .skills-layout{
+      display:grid;
+      grid-template-columns:270px 1fr;
+      gap:60px;
+    }
+    .skills-intro p{
+      font-size:13px;
+      color:var(--muted);
+      margin:15px 0 25px;
+      line-height:1.8;
+    }
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:10px;
+    }
+    .skill{
+      min-height:92px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      background:rgba(255,255,255,.45);
+      border:1px solid var(--line);
+      border-radius:7px;
+      color:var(--olive-dark);
+      transition:.25s;
+    }
+    .skill:hover{
+      background:#fff;
+      border-color:#afb59b;
+      transform:translateY(-3px);
+    }
+    .skill svg{width:24px;height:24px;color:var(--olive)}
+    .skill strong{font-size:10px;font-weight:600}
+
+    /* PROJECTS */
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:30px;
+      margin-bottom:32px;
+    }
+    .section-head p{
+      max-width:380px;
+      margin-top:10px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+    .project{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:7px;
+      overflow:hidden;
+      transition:.3s;
+    }
+    .project:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .project-image{
+      height:170px;
+      overflow:hidden;
+      background:#d9ddca;
+    }
+    .project-image img{
+      width:100%;height:100%;object-fit:cover;
+      transition:.45s;
+    }
+    .project:hover .project-image img{transform:scale(1.05)}
+    .project-body{padding:17px}
+    .project-label{
+      font-size:8px;
+      letter-spacing:2px;
+      color:var(--olive);
+      font-weight:700;
+      margin-bottom:7px;
+    }
+    .project h3{
+      font-family:"Playfair Display",serif;
+      font-size:22px;
+      line-height:1.05;
+      color:var(--olive-dark);
+      font-weight:500;
+    }
+    .project p{
+      color:var(--muted);
+      font-size:10px;
+      margin:6px 0 12px;
+    }
+    .tags{display:flex;gap:5px;flex-wrap:wrap}
+    .tag{
+      border:1px solid #cdd0c0;
+      color:#69705a;
+      padding:3px 7px;
+      border-radius:20px;
+      font-size:8px;
+    }
+
+    /* MEDIA */
+    .media-layout{
+      display:grid;
+      grid-template-columns:270px 1fr;
+      gap:60px;
+      align-items:start;
+    }
+    .media-intro p{
+      font-size:13px;color:var(--muted);
+      line-height:1.8;margin:15px 0 25px;
+    }
+    .gallery{
+      display:grid;
+      grid-template-columns:1.3fr 1fr 1fr 1.3fr;
+      gap:8px;
+      height:245px;
+    }
+    .gallery-item{
+      position:relative;
+      overflow:hidden;
+      border-radius:6px;
+      background:#d8dcc8;
+    }
+    .gallery-item img{
+      width:100%;height:100%;object-fit:cover;
+      transition:.45s;
+    }
+    .gallery-item:hover img{transform:scale(1.06)}
+    .gallery-item:after{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(transparent 55%,rgba(35,43,24,.6));
+    }
+    .gallery-item span{
+      position:absolute;
+      z-index:2;
+      left:12px;bottom:10px;
+      color:#fff;
+      font-size:9px;
+      font-weight:600;
+    }
+
+    /* EDUCATION */
+    .education{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    .edu-card{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:7px;
+      padding:23px;
+      display:flex;
+      align-items:center;
+      gap:17px;
+    }
+    .edu-icon{
+      width:45px;height:45px;flex:none;
+      display:grid;place-items:center;
+      color:var(--olive);
+      border:1px solid #c5c9b6;
+      border-radius:50%;
+    }
+    .edu-card h3{
+      font-family:"Playfair Display",serif;
+      color:var(--olive-dark);
+      font-size:19px;
+      font-weight:500;
+    }
+    .edu-card p{font-size:11px;color:#707662}
+    .edu-card small{font-size:9px;color:#909580}
+
+    /* CONTACT */
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+    .contact-col{
+      padding:25px;
+      min-height:135px;
+      border-right:1px solid var(--line);
+    }
+    .contact-col:last-child{border-right:0}
+    .contact-item{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:14px;
+      color:#66705a;
+      font-size:11px;
+    }
+    .contact-item svg{width:17px;color:var(--olive)}
+    .contact-socials{display:grid;gap:10px}
+    .contact-socials a{
+      display:flex;align-items:center;gap:9px;
+      color:#66705a;font-size:10px;
+    }
+    .contact-socials a:hover{color:var(--olive-dark)}
+
+    footer{
+      padding:25px 0;
+      background:var(--olive-dark);
+      color:#dfe1d1;
+    }
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+    footer .logo{color:#f4f3e9}
+    footer .logo span{color:#cdd2bb}
+    .footer-copy{font-size:10px;color:#b7bca8}
+    .back-top{
+      width:35px;height:35px;
+      border:1px solid #768060;
+      border-radius:50%;
+      display:grid;place-items:center;
+    }
+
+    /* reveal */
+    .reveal{
+      opacity:0;
+      transform:translateY(18px);
+      transition:opacity .7s ease,transform .7s ease;
+    }
+    .reveal.visible{opacity:1;transform:none}
+
+    /* MOBILE */
+    @media(max-width:1050px){
+      .container{width:min(var(--max),calc(100% - 44px))}
+      .nav-links{gap:20px}
+      .hero-inner{grid-template-columns:1fr 1fr;gap:20px}
+      .photo-frame{width:390px}
+      .about-cards{grid-template-columns:repeat(2,1fr)}
+      .projects{grid-template-columns:repeat(2,1fr)}
+      .skills-grid{grid-template-columns:repeat(4,1fr)}
+    }
+
+    @media(max-width:760px){
+      .container{width:calc(100% - 30px)}
+      .topbar{height:68px}
+      .nav-links{
+        position:absolute;
+        top:68px;left:15px;right:15px;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+        padding:8px;
+        background:var(--white);
+        border:1px solid var(--line);
+        border-radius:10px;
+        box-shadow:var(--shadow);
+      }
+      .nav-links.open{display:flex}
+      .nav-links a{display:block;padding:12px}
+      .nav-links a.active:after{display:none}
+      .menu-btn{display:grid}
+      .nav-actions .icon-btn,.nav-actions>.btn{display:none}
+
+      .hero{min-height:auto}
+      .hero-inner{
+        grid-template-columns:1fr;
+        min-height:auto;
+        gap:0;
+      }
+      .hero-copy{padding:75px 0 30px}
+      h1{font-size:70px;letter-spacing:-3px}
+      .hero-visual{min-height:510px}
+      .photo-frame{
+        width:min(370px,84%);
+        height:430px;
+        transform:none;
+      }
+      .handwrite{right:1%;top:12%}
+      .scroll{display:none}
+
+      .section{padding:60px 0}
+      .section-head{align-items:flex-start;flex-direction:column}
+      .about-layout,.skills-layout,.media-layout{
+        grid-template-columns:1fr;
+        gap:35px;
+      }
+      .about-cards{grid-template-columns:repeat(2,1fr)}
+      .skills-grid{grid-template-columns:repeat(3,1fr)}
+      .projects{grid-template-columns:1fr 1fr}
+      .gallery{grid-template-columns:1fr 1fr;height:360px}
+      .education{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .contact-col{border-right:0;border-bottom:1px solid var(--line)}
+      .contact-col:last-child{border-bottom:0}
+    }
+
+    @media(max-width:470px){
+      .logo{font-size:21px}
+      h1{font-size:57px}
+      .hero-role{font-size:10px;letter-spacing:2px}
+      .about-cards,.projects{grid-template-columns:1fr}
+      .skills-grid{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:1fr;height:520px}
+      .gallery-item:nth-child(3),
+      .gallery-item:nth-child(4){display:none}
+      .education{grid-template-columns:1fr}
+      .footer-inner{flex-wrap:wrap}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="blob tl"></div>
+
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#home" class="logo">JOBIN <span>JOHN</span></a>
+
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a class="active" href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#media">Video</a></li>
+          <li><a href="#media">Photography</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">
+          <i data-lucide="moon"></i>
+        </button>
+        <a class="btn" href="#contact">Let's Talk <i data-lucide="arrow-right"></i></a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">Hello, I'm</div>
+
+          <h1>JOBIN <span>JOHN</span></h1>
+
+          <div class="hero-role">
+            CSE STUDENT <i>/</i> DEVELOPER <i>/</i> VIDEO EDITOR <i>/</i> VISUAL CREATOR
+          </div>
+
+          <p class="hero-description">
+            I build digital experiences, experiment with technology and create visual content.
+            Passionate about turning ideas into useful digital solutions — whether it's code,
+            a video, or a frame.
+          </p>
+
+          <div class="hero-buttons">
+            <a class="btn" href="#projects">View My Work <i data-lucide="arrow-right"></i></a>
+            <a class="btn outline" href="#contact">Contact Me</a>
+          </div>
+
+          <div class="socials">
+            <a href="https://github.com/" target="_blank" aria-label="GitHub"><i data-lucide="github"></i></a>
+            <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+            <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="https://youtube.com/" target="_blank" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+            <a href="mailto:jobinjohn@gmail.com" aria-label="Email"><i data-lucide="mail"></i></a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-soft"></div>
+          <div class="hero-soft two"></div>
+
+          <div class="photo-frame">
+            <!-- YOUR MAIN PHOTO: replace this path -->
+            <img src="jobinnnn.jpeg" alt="Jobin John">
+          </div>
+
+          <div class="scroll">
+            <span>SCROLL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="blob br"></div>
+    </section>
+
+    <!-- ABOUT / FEATURE CARDS -->
+    <section id="about">
+      <div class="container section reveal">
+        <div class="about-layout">
+          <div class="about-intro">
+            <div class="section-label">01 / ABOUT</div>
+            <h2 class="section-title">A little<br>about me</h2>
+            <p>
+              I'm Jobin John, a B.Tech Computer Science & Engineering student.
+              I love technology, photography, videography and creating useful digital solutions.
+            </p>
+            <a class="learn-link" href="#contact">Learn More <i data-lucide="arrow-right"></i></a>
+          </div>
+
+          <div class="about-cards">
+            <a class="feature-card" href="#projects">
+             
+              <div class="feature-body">
+                <div class="feature-number">02 / PROJECTS</div>
+                <h3>Projects<br>that matter</h3>
+                <div class="feature-arrow"><i data-lucide="arrow-right"></i></div>
+              </div>
+            </a>
+
+            <a class="feature-card" href="#media">
+             
+              <div class="feature-body">
+                <div class="feature-number">03 / VIDEO & PHOTOGRAPHY</div>
+                <h3>Stories<br>in frames</h3>
+                <div class="feature-arrow"><i data-lucide="arrow-right"></i></div>
+              </div>
+            </a>
+
+            <a class="feature-card" href="#education">
+        
+              <div class="feature-body">
+                <div class="feature-number">04 / EDUCATION</div>
+                <h3>My academic<br>journey</h3>
+                <div class="feature-arrow"><i data-lucide="arrow-right"></i></div>
+              </div>
+            </a>
+
+            <a class="feature-card" href="#contact">
+
+              <div class="feature-body">
+                <div class="feature-number">05 / CONTACT</div>
+                <h3>Let's<br>connect</h3>
+                <div class="feature-arrow"><i data-lucide="arrow-right"></i></div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container section reveal">
+        <div class="skills-layout">
+          <div class="skills-intro">
+            <div class="section-label">02 / SKILLS</div>
+            <h2 class="section-title">Things<br>I work with</h2>
+            <p>Technologies and creative tools I work with and am currently learning.</p>
+            <a class="btn outline" href="#contact">Let's Work <i data-lucide="arrow-right"></i></a>
+          </div>
+
+          <div class="skills-grid">
+            <div class="skill"><i data-lucide="code-2"></i><strong>HTML</strong></div>
+            <div class="skill"><i data-lucide="braces"></i><strong>CSS</strong></div>
+            <div class="skill"><i data-lucide="file-code-2"></i><strong>JavaScript</strong></div>
+            <div class="skill"><i data-lucide="code-2"></i><strong>C</strong></div>
+            <div class="skill"><i data-lucide="terminal"></i><strong>Python</strong></div>
+            <div class="skill"><i data-lucide="github"></i><strong>GitHub</strong></div>
+            <div class="skill"><i data-lucide="film"></i><strong>DaVinci Resolve</strong></div>
+            <div class="skill"><i data-lucide="camera"></i><strong>Photography</strong></div>
+            <div class="skill"><i data-lucide="video"></i><strong>Videography</strong></div>
+            <div class="skill"><i data-lucide="image"></i><strong>Lightroom</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container section reveal">
+        <div class="section-head">
+          <div>
+            <div class="section-label">03 / PROJECTS</div>
+            <h2 class="section-title">Projects<br>that matter</h2>
+            <p>A few projects I've built, worked on and contributed to.</p>
+          </div>
+          <a class="btn outline" href="https://github.com/" target="_blank">View All Projects <i data-lucide="arrow-right"></i></a>
+        </div>
+
+        <div class="projects">
+          <article class="project">
+            <div class="project-image"><img src="images/jarvis.jpg" alt="JARVIS"></div>
+            <div class="project-body">
+              <div class="project-label">01 / VOICE AI</div>
+              <h3>JARVIS</h3>
+              <p>Java-based intelligent voice assistant.</p>
+              <div class="tags"><span class="tag">Java</span><span class="tag">OpenAI</span><span class="tag">Whisper</span></div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-image"><img src="images/cleancity.jpg" alt="CleanCity"></div>
+            <div class="project-body">
+              <div class="project-label">02 / CIVIC TECH</div>
+              <h3>CleanCity</h3>
+              <p>Civic issue reporting platform for Kannur.</p>
+              <div class="tags"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Supabase</span></div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-image"><img src="images/portfolio.jpg" alt="Portfolio website"></div>
+            <div class="project-body">
+              <div class="project-label">03 / WEB</div>
+              <h3>Portfolio</h3>
+              <p>Personal portfolio and visual identity.</p>
+              <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-image"><img src="images/college-project.jpg" alt="College projects"></div>
+            <div class="project-body">
+              <div class="project-label">04 / COLLEGE</div>
+              <h3>College Projects</h3>
+              <p>Programming and data structures projects.</p>
+              <div class="tags"><span class="tag">C</span><span class="tag">Java</span><span class="tag">Python</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO & PHOTOGRAPHY -->
+    <section id="media">
+      <div class="container section reveal">
+        <div class="media-layout">
+          <div class="media-intro">
+            <div class="section-label">04 / VIDEO & PHOTOGRAPHY</div>
+            <h2 class="section-title">Stories<br>in frames</h2>
+            <p>Capturing moments, telling stories and bringing ideas to life through visuals.</p>
+            <a class="btn outline" href="#contact">View Gallery <i data-lucide="arrow-right"></i></a>
+          </div>
+
+          <div class="gallery">
+            <a href="#" class="gallery-item"><img src="images/video1.jpg" alt="Cinematic edit"><span>01 / Cinematic Edits</span></a>
+            <a href="#" class="gallery-item"><img src="images/photo1.jpg" alt="Landscape"><span>02 / Landscape</span></a>
+            <a href="#" class="gallery-item"><img src="images/photo2.jpg" alt="Camera"><span>03 / Camera</span></a>
+            <a href="#" class="gallery-item"><img src="images/video2.jpg" alt="Color grade"><span>04 / Color Grade</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="container section reveal">
+        <div class="section-head">
+          <div>
+            <div class="section-label">05 / EDUCATION</div>
+            <h2 class="section-title">My academic<br>journey</h2>
+          </div>
+        </div>
+
+        <div class="education">
+          <div class="edu-card">
+            <div class="edu-icon"><i data-lucide="graduation-cap"></i></div>
+            <div>
+              <h3>B.Tech Computer Science & Engineering</h3>
+              <p>College of Engineering, KTU</p>
+              <small>Current undergraduate studies</small>
+            </div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-icon"><i data-lucide="book-open"></i></div>
+            <div>
+              <h3>Plus Two</h3>
+              <p>Physics & Mathematics</p>
+              <small>Completed</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container section reveal">
+        <div class="section-head">
+          <div>
+            <div class="section-label">06 / CONTACT</div>
+            <h2 class="section-title">Let's<br>connect</h2>
+            <p>Feel free to reach out for collaborations, opportunities or just a hello.</p>
+          </div>
+   
+<a class="btn"
+   href="https://wa.me/919746669077"
+   target="_blank"
+   rel="noopener noreferrer">
+    Send Message <i data-lucide="arrow-right"></i>
+</a>
+
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-col">
+            <div class="contact-item"><i data-lucide="mail"></i><span>jobinjohn@gmail.com</span></div>
+            <div class="contact-item"><i data-lucide="phone"></i><span>+91 9746669077</span></div>
+          </div>
+          <div class="contact-col">
+            <div class="contact-item"><i data-lucide="map-pin"></i><span>Kerala, India</span></div>
+            <div class="contact-item"><i data-lucide="clock-3"></i><span>Available for freelance work</span></div>
+          </div>
+          <div class="contact-col">
+            <div class="contact-socials">
+              <a href="https://github.com/" target="_blank"><i data-lucide="github"></i> GitHub →</a>
+              <a href="https://linkedin.com/" target="_blank"><i data-lucide="linkedin"></i> LinkedIn →</a>
+              <a href="https://instagram.com/" target="_blank"><i data-lucide="instagram"></i> Instagram →</a>
+              <a href="https://youtube.com/" target="_blank"><i data-lucide="youtube"></i> YouTube →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="logo">JOBIN <span>JOHN</span></div>
+      <div class="footer-copy">© <span id="year"></span> Jobin John. All rights reserved.</div>
+      <a href="#home" class="back-top" aria-label="Back to top"><i data-lucide="arrow-up"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+      menuBtn.innerHTML = navLinks.classList.contains("open")
+        ? '<i data-lucide="x"></i>'
+        : '<i data-lucide="menu"></i>';
+      lucide.createIcons();
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => navLinks.classList.remove("open"));
+    });
+
+    const sections = document.querySelectorAll("main section[id]");
+    const links = document.querySelectorAll(".nav-links a");
+
+    const navObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          links.forEach(link => {
+            link.classList.toggle(
+              "active",
+              link.getAttribute("href") === "#" + entry.target.id
+            );
+          });
+        }
+      });
+    }, {rootMargin:"-35% 0px -55% 0px"});
+
+    sections.forEach(section => navObserver.observe(section));
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.08});
+
+    document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+    /* Theme toggle */
+    const themeBtn = document.getElementById("themeBtn");
+    let dark = false;
+
+    themeBtn.addEventListener("click", () => {
+      dark = !dark;
+
+      if(dark){
+        document.documentElement.style.setProperty("--cream","#303522");
+        document.documentElement.style.setProperty("--cream-2","#3a402b");
+        document.documentElement.style.setProperty("--white","#383e2a");
+        document.documentElement.style.setProperty("--olive","#aab28a");
+        document.documentElement.style.setProperty("--olive-dark","#eef0df");
+        document.documentElement.style.setProperty("--text","#e9ecdc");
+        document.documentElement.style.setProperty("--muted","#c1c6ad");
+        document.documentElement.style.setProperty("--line","#555c45");
+        themeBtn.innerHTML = '<i data-lucide="sun"></i>';
+      }else{
+        document.documentElement.style.setProperty("--cream","#f5f4ec");
+        document.documentElement.style.setProperty("--cream-2","#efeee4");
+        document.documentElement.style.setProperty("--white","#fbfaf5");
+        document.documentElement.style.setProperty("--olive","#56613a");
+        document.documentElement.style.setProperty("--olive-dark","#354025");
+        document.documentElement.style.setProperty("--text","#39412b");
+        document.documentElement.style.setProperty("--muted","#777c67");
+        document.documentElement.style.setProperty("--line","#d9dacd");
+        themeBtn.innerHTML = '<i data-lucide="moon"></i>';
+      }
+      lucide.createIcons();
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
